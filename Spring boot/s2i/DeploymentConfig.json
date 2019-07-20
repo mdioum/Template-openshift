@@ -1,0 +1,49 @@
+{
+  "kind": "DeploymentConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "spring1"
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "labels": {
+          "name": "spring1"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "spring1",
+            "image": "spring1"
+          }
+        ]
+      }
+    },
+    "replicas": 5,
+    "selector": {
+      "name": "spring1"
+    },
+    "triggers": [
+      {
+        "type": "ConfigChange"
+      },
+      {
+        "type": "ImageChange",
+        "imageChangeParams": {
+          "automatic": true,
+          "containerNames": [
+            "spring1"
+          ],
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "spring1:latest"
+          }
+        }
+      }
+    ],
+    "strategy": {
+      "type": "Rolling"
+    }
+  }
+}

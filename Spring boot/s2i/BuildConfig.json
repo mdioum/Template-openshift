@@ -1,0 +1,39 @@
+{
+  "kind": "BuildConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "spring1-build",
+    "labels":{
+      "app": "spring1"
+    }
+  },
+  "spec": {
+    "triggers": [
+      {
+        "type": "ImageChange"
+      }
+    ],
+    "source": {
+      "type": "Git",
+      "git": {
+        "uri": "https://github.com/mdioum/springboot-openshift.git"
+      }
+    },
+    "strategy": {
+      "type": "Source",
+      "sourceStrategy": {
+        "from": {
+          "kind": "ImageStreamTag",
+          "name": "java:8",
+          "namespace": "openshift"
+        }
+      }
+    },
+    "output": {
+      "to": {
+        "kind": "ImageStreamTag",
+        "name": "spring1:latest"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "kind":"Service",
+  "apiVersion":"v1",
+  "metadata":{
+    "name":"spring1",
+    "labels":{
+      "app":"spring1"
+    }
+  },
+  "spec":{
+    "selector":{
+      "name":"spring1"
+    },
+    "ports":[
+      {
+        "port":8080
+      }
+    ]
+
+  }
+}

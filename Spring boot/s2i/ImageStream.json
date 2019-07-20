@@ -1,0 +1,10 @@
+{
+  "kind":"ImageStream",
+  "apiVersion":"v1",
+  "metadata":{
+    "name":"spring1",
+    "labels":{
+      "app":"spring1"
+    }
+  }
+}
